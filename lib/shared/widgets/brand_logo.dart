@@ -6,7 +6,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../l10n/strings.dart';
 
-/// Logo da marca: chip "nascer do sol" dourado + nome do app. Usado no Splash
+/// Logo da marca: chip "coração" dourado + nome do app. Usado no Splash
 /// e no Onboarding. [stacked] empilha (vertical) ou alinha (horizontal).
 class BrandLogo extends StatelessWidget {
   const BrandLogo({
@@ -36,7 +36,7 @@ class BrandLogo extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(size * 0.3),
       ),
-      child: Icon(LucideIcons.sunrise, color: AppColors.bg, size: size * 0.54),
+      child: Icon(LucideIcons.heart, color: AppColors.bg, size: size * 0.54),
     );
 
     final title = Text(
