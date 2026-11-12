@@ -13,18 +13,18 @@ void main() {
     await VerseData.init();
   });
 
-  test('14 categorias; cada frase pertence a uma delas (pt)', () {
-    expect(VerseData.categories.length, 14);
+  test('12 categorias; cada frase pertence a uma delas (pt)', () {
+    expect(VerseData.categories.length, 12);
     final ids = VerseData.categories.map((c) => c.id).toSet();
     for (final v in VerseData.allFor('pt')) {
       expect(ids.contains(v.categoryId), isTrue);
     }
   });
 
-  test('pelo menos 5000 frases por idioma (pt/en/es)', () {
-    expect(VerseData.allFor('pt').length, greaterThanOrEqualTo(5000));
-    expect(VerseData.allFor('en').length, greaterThanOrEqualTo(5000));
-    expect(VerseData.allFor('es').length, greaterThanOrEqualTo(5000));
+  test('pelo menos 1000 frases por idioma (pt/en/es)', () {
+    expect(VerseData.allFor('pt').length, greaterThanOrEqualTo(1000));
+    expect(VerseData.allFor('en').length, greaterThanOrEqualTo(1000));
+    expect(VerseData.allFor('es').length, greaterThanOrEqualTo(1000));
   });
 
   test('conteúdo pt/en/es paralelo (mesmo nº por categoria; ids estáveis)', () {
@@ -53,11 +53,11 @@ void main() {
     const pt = T(Locale('pt'));
     const en = T(Locale('en'));
     const es = T(Locale('es'));
-    expect(pt.appName, 'Frases Diárias');
-    expect(en.appName, 'Daily Quotes');
-    expect(es.appName, 'Frases del Día');
-    expect(pt.catName('esperanca'), 'Esperança');
-    expect(en.catName('gratidao'), 'Gratitude');
-    expect(es.catName('sabedoria'), 'Sabiduría');
+    expect(pt.appName, 'Mensagens de Amor');
+    expect(en.appName, 'Love Messages');
+    expect(es.appName, 'Mensajes de Amor');
+    expect(pt.catName('declaracao'), 'Declarações de Amor');
+    expect(en.catName('gratidao'), 'Grateful for You');
+    expect(es.catName('saudade'), 'Te Extraño');
   });
 }

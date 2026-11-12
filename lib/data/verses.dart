@@ -26,37 +26,24 @@ class VerseCategory {
 }
 
 /// Banco local de frases carregado de `assets/frases/<lang>.json` (pt/en/es),
-/// ~5.900 frases ORIGINAIS por idioma em 14 categorias. Offline. `init()` deve
+/// ~1.300 mensagens de amor ORIGINAIS por idioma em 12 categorias romanticas. Offline. `init()` deve
 /// ser chamado no startup (ver main) antes de usar.
 class VerseData {
   VerseData._();
 
   static const categories = <VerseCategory>[
-    VerseCategory('motivacao', LucideIcons.mountain,
-        'assets/landscapes/cat_motivacao.jpg'),
-    VerseCategory('superacao', LucideIcons.trendingUp,
-        'assets/landscapes/editor_bg03.jpg'),
-    VerseCategory('sucesso', LucideIcons.trophy,
-        'assets/landscapes/editor_bg02.jpg'),
-    VerseCategory('coragem', LucideIcons.flame,
-        'assets/landscapes/editor_bg01.jpg'),
-    VerseCategory('trabalho', LucideIcons.briefcase,
-        'assets/landscapes/cat_trabalho.jpg'),
-    VerseCategory('amor', LucideIcons.heart, 'assets/landscapes/cat_amor.jpg'),
-    VerseCategory('amizade', LucideIcons.users,
-        'assets/landscapes/insp_coast.jpg'),
-    VerseCategory('gratidao', LucideIcons.sparkles,
-        'assets/landscapes/editor_bg07.jpg'),
-    VerseCategory('felicidade', LucideIcons.sun,
-        'assets/landscapes/cat_felicidade.jpg'),
-    VerseCategory('vida', LucideIcons.sprout, 'assets/landscapes/cat_vida.jpg'),
-    VerseCategory('reflexao', LucideIcons.feather,
-        'assets/landscapes/cat_reflexao.jpg'),
-    VerseCategory('sabedoria', LucideIcons.bookOpen,
-        'assets/landscapes/editor_bg08.jpg'),
-    VerseCategory('paz', LucideIcons.leaf, 'assets/landscapes/editor_bg06.jpg'),
-    VerseCategory('esperanca', LucideIcons.sunrise,
-        'assets/landscapes/editor_bg04.jpg'),
+    VerseCategory('declaracao', LucideIcons.heart, 'assets/landscapes/cat_amor.jpg'),
+    VerseCategory('te_amo', LucideIcons.heartHandshake, 'assets/landscapes/editor_bg04.jpg'),
+    VerseCategory('bomdia', LucideIcons.sunrise, 'assets/landscapes/hero_sunrise.jpg'),
+    VerseCategory('boanoite', LucideIcons.moon, 'assets/landscapes/bg_city_night.jpg'),
+    VerseCategory('saudade', LucideIcons.messageCircle, 'assets/landscapes/bg_misty_forest.jpg'),
+    VerseCategory('paixao', LucideIcons.flame, 'assets/landscapes/editor_bg01.jpg'),
+    VerseCategory('namoro', LucideIcons.users, 'assets/landscapes/insp_coast.jpg'),
+    VerseCategory('distancia', LucideIcons.plane, 'assets/landscapes/bg_misty_mountains.jpg'),
+    VerseCategory('reconciliacao', LucideIcons.handHeart, 'assets/landscapes/editor_bg06.jpg'),
+    VerseCategory('casamento', LucideIcons.infinity, 'assets/landscapes/editor_bg05.jpg'),
+    VerseCategory('cantadas', LucideIcons.sparkles, 'assets/landscapes/editor_bg07.jpg'),
+    VerseCategory('gratidao', LucideIcons.gift, 'assets/landscapes/editor_bg08.jpg'),
   ];
 
   static final Map<String, Map<String, List<String>>> _content = {};
