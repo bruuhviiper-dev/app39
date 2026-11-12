@@ -1,7 +1,7 @@
-/// Fundos de paisagem (offline). Fotos reais do Unsplash — licença livre para
-/// uso comercial (ver assets/landscapes/ATTRIBUTIONS.md). Organizados por TEMA
-/// para o editor. Fallback elegante quando uma imagem não existir é tratado nos
-/// widgets (gradiente navy + ícone).
+/// Fundos ROMÂNTICOS (offline). Arte 100% ORIGINAL gerada para o app (pôr do sol,
+/// silhueta de casal, céu estrelado, bokeh de corações, flores, luz de velas) —
+/// sem fotos/stock de terceiros. Fallback elegante quando uma imagem não existir
+/// é tratado nos widgets (gradiente + ícone).
 class Landscapes {
   Landscapes._();
 

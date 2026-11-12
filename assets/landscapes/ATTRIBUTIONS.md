@@ -1,19 +1,9 @@
-# Atribuições das imagens de fundo
+# Fundos — Mensagens de Amor
 
-Todas as fotografias de paisagem em `assets/landscapes/` são provenientes do
-**Unsplash** (https://unsplash.com) e usadas sob a **Licença Unsplash**
-(https://unsplash.com/license), que permite uso comercial e gratuito, sem
-necessidade obrigatória de atribuição. Ainda assim, registramos aqui a fonte,
-como boa prática.
+Todas as imagens desta pasta são **arte 100% original**, geradas por nós
+especificamente para este aplicativo (gradientes de pôr do sol, silhueta de casal,
+céu estrelado, bokeh de corações, flores estilizadas e luz de velas).
 
-- Fonte: Unsplash — https://unsplash.com
-- Licença: Unsplash License (uso comercial permitido; sem royalties)
-- Entrega offline: as imagens são curadas (somente paisagens, sem pessoas,
-  rostos ou animais identificáveis) e empacotadas no app como assets locais.
-
-As demais artes temáticas eventuais (cruzes/gradientes gerados) são criações
-próprias do app.
-
-> Observação: a Licença Unsplash não exige crédito, mas proíbe revender as
-> fotos sem modificação como um produto concorrente (ex.: outro banco de
-> imagens). O uso aqui — como fundo decorativo dentro do app — é permitido.
+- **Sem fotografias de terceiros**, sem bancos de imagem, sem obras protegidas.
+- Nenhuma atribuição é necessária.
+- Script gerador: `gen_love_backgrounds.py` (PIL).
