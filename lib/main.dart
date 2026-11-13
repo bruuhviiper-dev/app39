@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/theme/app_theme.dart';
+import 'data/couple_data.dart';
 import 'data/verses.dart';
 import 'l10n/strings.dart';
 import 'screens/splash_screen.dart';
@@ -21,7 +22,8 @@ Future<void> main() async {
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
   ));
-  await VerseData.init(); // carrega ~5.900 frases/idioma (14 categorias)
+  await VerseData.init(); // mensagens de amor por idioma (12 categorias)
+  await CoupleData.init(); // perguntas + desafio 30 dias
   final prefs = await SharedPreferences.getInstance();
   final appState = AppState(prefs);
   runApp(FrasesDiariasApp(appState: appState));

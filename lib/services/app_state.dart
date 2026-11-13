@@ -21,6 +21,10 @@ class AppState extends ChangeNotifier {
   static const _kOnboarding = 'onboarding_done';
   static const _kEntitlements = 'entitlements';
   static const _kTempPro = 'temp_pro_until';
+  static const _kPartnerName = 'partner_name';
+  static const _kRelStart = 'rel_start_ms';
+  static const _kChallengeDone = 'challenge_done_days';
+  static const _kChallengeLast = 'challenge_last_date';
 
   /// Produto de compra única "remover anúncios" — mesmo id do app2/app26.
   static const String pRemoveAds = 'no_ads';
@@ -33,6 +37,10 @@ class AppState extends ChangeNotifier {
   bool _onboardingDone = false;
   final Set<String> _entitlements = {};
   DateTime? _tempProUntil;
+  String _partnerName = '';
+  DateTime? _relStart;
+  final Set<int> _challengeDone = {};
+  String? _challengeLast; // yyyy-mm-dd da última conclusão
 
   // ----- favoritos -----
   Set<String> get favorites => Set.unmodifiable(_favorites);
@@ -123,6 +131,72 @@ class AppState extends ChangeNotifier {
   /// Vê o app sem anúncios: comprou "remover anúncios" OU está no PRO temporário.
   bool get adsRemoved => _entitlements.contains(pRemoveAds) || hasTemporaryPro;
 
+  // ----- nome do par (personalização) -----
+  String get partnerName => _partnerName;
+  bool get hasPartnerName => _partnerName.trim().isNotEmpty;
+  void setPartnerName(String name) {
+    _partnerName = name.trim();
+    _prefs.setString(_kPartnerName, _partnerName);
+    notifyListeners();
+  }
+
+  // ----- modo casal: data de início do relacionamento -----
+  DateTime? get relationshipStart => _relStart;
+  bool get hasRelationship => _relStart != null;
+
+  /// Dias juntos (0 se não definido).
+  int get daysTogether {
+    if (_relStart == null) return 0;
+    final now = DateTime.now();
+    final a = DateTime(_relStart!.year, _relStart!.month, _relStart!.day);
+    final b = DateTime(now.year, now.month, now.day);
+    return b.difference(a).inDays;
+  }
+
+  void setRelationshipStart(DateTime? d) {
+    _relStart = d;
+    if (d == null) {
+      _prefs.remove(_kRelStart);
+    } else {
+      _prefs.setInt(_kRelStart, d.millisecondsSinceEpoch);
+    }
+    notifyListeners();
+  }
+
+  // ----- desafio 30 dias -----
+  Set<int> get challengeDone => Set.unmodifiable(_challengeDone);
+  int get challengeCount => _challengeDone.length;
+  bool isChallengeDone(int day) => _challengeDone.contains(day);
+
+  /// Próximo dia do desafio a fazer (1..30), ou 0 se completou os 30.
+  int get challengeCurrentDay {
+    for (var d = 1; d <= 30; d++) {
+      if (!_challengeDone.contains(d)) return d;
+    }
+    return 0;
+  }
+
+  /// Já concluiu um dia hoje? (um por dia de calendário).
+  bool get challengeDoneToday => _challengeLast == _today();
+
+  /// Marca o dia como concluído (uma vez por dia). Ação positiva → review.
+  void completeChallengeDay(int day) {
+    if (_challengeDone.add(day)) {
+      _challengeLast = _today();
+      _prefs.setStringList(
+          _kChallengeDone, _challengeDone.map((e) => '$e').toList());
+      _prefs.setString(_kChallengeLast, _challengeLast!);
+      notifyListeners();
+      RatePrompt.registerPositiveAction();
+    }
+  }
+
+  static String _today() {
+    final n = DateTime.now();
+    return '${n.year}-${n.month.toString().padLeft(2, '0')}-'
+        '${n.day.toString().padLeft(2, '0')}';
+  }
+
   void _load() {
     _favorites.addAll(_prefs.getStringList(_kFavorites) ?? const []);
     final tm = _prefs.getInt(_kThemeMode);
@@ -136,5 +210,12 @@ class AppState extends ChangeNotifier {
     _entitlements.addAll(_prefs.getStringList(_kEntitlements) ?? const []);
     final tp = _prefs.getInt(_kTempPro);
     _tempProUntil = tp != null ? DateTime.fromMillisecondsSinceEpoch(tp) : null;
+    _partnerName = _prefs.getString(_kPartnerName) ?? '';
+    final rs = _prefs.getInt(_kRelStart);
+    _relStart = rs != null ? DateTime.fromMillisecondsSinceEpoch(rs) : null;
+    _challengeDone.addAll((_prefs.getStringList(_kChallengeDone) ?? const [])
+        .map(int.tryParse)
+        .whereType<int>());
+    _challengeLast = _prefs.getString(_kChallengeLast);
   }
 }

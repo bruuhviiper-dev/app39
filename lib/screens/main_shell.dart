@@ -8,6 +8,7 @@ import '../services/ads_service.dart';
 import '../shared/widgets/app_bottom_nav.dart';
 import '../shared/widgets/banner_ad.dart';
 import 'categories_screen.dart';
+import 'couple_hub_screen.dart';
 import 'favorites_screen.dart';
 import 'home_screen.dart';
 import 'image_editor_screen.dart';
@@ -34,13 +35,14 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     final t = T.of(context);
-    final showBanner = _index == 1 || _index == 2;
+    final showBanner = _index == 1 || _index == 3;
     return Scaffold(
       body: IndexedStack(
         index: _index,
         children: [
           const HomeBody(),
           const CategoriesScreen(),
+          const CoupleHubScreen(),
           const FavoritesScreen(),
           const SettingsScreen(),
         ],

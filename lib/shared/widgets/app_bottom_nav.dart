@@ -24,6 +24,7 @@ class AppBottomNav extends StatelessWidget {
     final items = <(IconData, String)>[
       (LucideIcons.house, t.navHome),
       (LucideIcons.layoutGrid, t.navCategories),
+      (LucideIcons.heartHandshake, t.navCouple),
       (LucideIcons.heart, t.navFavorites),
       (LucideIcons.menu, t.navMore),
     ];

@@ -192,6 +192,49 @@ class T {
 
   // Categorias (resolvidas por id)
   String catName(String id) => _('cat.$id.name');
+
+  // ---- Nós / casal (features de diferenciação) ----
+  String get navCouple => _('nav.couple');
+  String get coupleTagline => _('couple.tagline');
+  String get coupleNameLabel => _('couple.nameLabel');
+  String get coupleDateLabel => _('couple.dateLabel');
+  String get coupleTapToSet => _('couple.tapToSet');
+  String get coupleDaysWord => _('couple.daysWord');
+  String get coupleNoDate => _('couple.noDate');
+  String get coupleNextMonthsary => _('couple.nextMonthsary'); // {n}
+  String get coupleNextAnniversary => _('couple.nextAnniversary'); // {n}
+  String get coupleTodaySpecial => _('couple.todaySpecial');
+  String get cardGenerator => _('card.generator');
+  String get cardGeneratorDesc => _('card.generatorDesc');
+  String get cardQuestions => _('card.questions');
+  String get cardQuestionsDesc => _('card.questionsDesc');
+  String get cardChallenge => _('card.challenge');
+  String get cardChallengeDesc => _('card.challengeDesc');
+  String get dlgSave => _('dlg.save');
+  String get dlgClear => _('dlg.clear');
+  String get namePromptHint => _('name.hint');
+  // Gerador
+  String get genTitle => _('gen.title');
+  String get genChooseTone => _('gen.chooseTone');
+  String get genPersonalized => _('gen.personalized'); // {name}
+  String get genSetNameHint => _('gen.setNameHint');
+  String get genGenerate => _('gen.generate');
+  String get genRegenerate => _('gen.regenerate');
+  String get genEmpty => _('gen.empty');
+  String toneName(String k) => _('tone.$k');
+  // Perguntas
+  String get qTitle => _('q.title');
+  String get qIntro => _('q.intro');
+  String get qNext => _('q.next');
+  // Desafio
+  String get chTitle => _('ch.title');
+  String get chDayWord => _('ch.dayWord');
+  String get chProgress => _('ch.progress'); // {n}
+  String get chMarkDone => _('ch.markDone');
+  String get chDoneWord => _('ch.doneWord');
+  String get chComeTomorrow => _('ch.comeTomorrow');
+  String get chComplete => _('ch.complete');
+  String get chLocked => _('ch.locked');
   String catDesc(String id) => _('cat.$id.desc');
 
   static const Map<String, Map<String, String>> _data = {
@@ -381,6 +424,50 @@ class T {
       'cat.cantadas.desc': 'Para arrancar um sorriso',
       'cat.gratidao.name': 'Gratidão pelo Amor',
       'cat.gratidao.desc': 'Obrigado por você',
+      'nav.couple': 'Nós',
+      'couple.tagline': 'Tudo sobre o amor de vocês',
+      'couple.nameLabel': 'Nome do seu amor',
+      'couple.dateLabel': 'Começamos a namorar em',
+      'couple.tapToSet': 'Toque para definir',
+      'couple.daysWord': 'dias juntos',
+      'couple.noDate': 'Defina a data em que vocês começaram para ver os dias juntos.',
+      'couple.nextMonthsary': 'Faltam {n} dias para o seu mêsversário 💞',
+      'couple.nextAnniversary': 'Faltam {n} dias para o aniversário de namoro 🎉',
+      'couple.todaySpecial': 'Hoje é um dia especial de vocês! 🎉',
+      'card.generator': 'Gerador de mensagem',
+      'card.generatorDesc': 'Crie uma mensagem única',
+      'card.questions': 'Perguntas para o casal',
+      'card.questionsDesc': 'Aproximem-se conversando',
+      'card.challenge': 'Desafio 30 dias',
+      'card.challengeDesc': 'Um gesto de amor por dia',
+      'dlg.save': 'Salvar',
+      'dlg.clear': 'Limpar',
+      'name.hint': 'Ex.: Maria',
+      'gen.title': 'Gerador de mensagem',
+      'gen.chooseTone': 'Escolha o tom',
+      'gen.personalized': 'Personalizado para {name}',
+      'gen.setNameHint': 'Defina o nome do seu amor para personalizar',
+      'gen.generate': 'Gerar mensagem',
+      'gen.regenerate': 'Gerar outra',
+      'gen.empty': 'Escolha um tom e toque em Gerar.',
+      'tone.romantico': 'Romântico',
+      'tone.fofo': 'Fofo / Bom dia',
+      'tone.saudade': 'Saudade',
+      'tone.desculpas': 'Desculpas',
+      'tone.engracado': 'Engraçado',
+      'tone.compromisso': 'Compromisso',
+      'tone.gratidao': 'Gratidão',
+      'q.title': 'Perguntas para o casal',
+      'q.intro': 'Uma pergunta para aproximar vocês',
+      'q.next': 'Próxima pergunta',
+      'ch.title': 'Desafio 30 dias de amor',
+      'ch.dayWord': 'Dia',
+      'ch.progress': '{n}/30 concluídos',
+      'ch.markDone': 'Marcar como feito',
+      'ch.doneWord': 'Feito',
+      'ch.comeTomorrow': 'Volte amanhã para o próximo desafio 💞',
+      'ch.complete': 'Vocês completaram os 30 dias de amor! 💞',
+      'ch.locked': 'Complete o dia anterior primeiro',
 
     },
     'en': {
@@ -567,6 +654,50 @@ class T {
       'cat.cantadas.desc': 'To spark a smile',
       'cat.gratidao.name': 'Grateful for You',
       'cat.gratidao.desc': 'Thank you for being you',
+      'nav.couple': 'Us',
+      'couple.tagline': 'All about your love',
+      'couple.nameLabel': "Your love's name",
+      'couple.dateLabel': 'We started dating on',
+      'couple.tapToSet': 'Tap to set',
+      'couple.daysWord': 'days together',
+      'couple.noDate': 'Set the day you started to see your days together.',
+      'couple.nextMonthsary': '{n} days to your monthly anniversary 💞',
+      'couple.nextAnniversary': '{n} days to your dating anniversary 🎉',
+      'couple.todaySpecial': 'Today is your special day! 🎉',
+      'card.generator': 'Message generator',
+      'card.generatorDesc': 'Create a unique message',
+      'card.questions': 'Questions for couples',
+      'card.questionsDesc': 'Grow closer by talking',
+      'card.challenge': '30-day challenge',
+      'card.challengeDesc': 'One act of love a day',
+      'dlg.save': 'Save',
+      'dlg.clear': 'Clear',
+      'name.hint': 'e.g. Sarah',
+      'gen.title': 'Message generator',
+      'gen.chooseTone': 'Choose the tone',
+      'gen.personalized': 'Personalized for {name}',
+      'gen.setNameHint': "Set your love's name to personalize",
+      'gen.generate': 'Generate message',
+      'gen.regenerate': 'Generate another',
+      'gen.empty': 'Choose a tone and tap Generate.',
+      'tone.romantico': 'Romantic',
+      'tone.fofo': 'Sweet / Good morning',
+      'tone.saudade': 'Missing you',
+      'tone.desculpas': 'Sorry',
+      'tone.engracado': 'Funny',
+      'tone.compromisso': 'Commitment',
+      'tone.gratidao': 'Gratitude',
+      'q.title': 'Questions for couples',
+      'q.intro': 'A question to bring you closer',
+      'q.next': 'Next question',
+      'ch.title': '30 days of love challenge',
+      'ch.dayWord': 'Day',
+      'ch.progress': '{n}/30 done',
+      'ch.markDone': 'Mark as done',
+      'ch.doneWord': 'Done',
+      'ch.comeTomorrow': 'Come back tomorrow for the next one 💞',
+      'ch.complete': 'You finished the 30 days of love! 💞',
+      'ch.locked': 'Finish the previous day first',
 
     },
     'es': {
@@ -756,6 +887,50 @@ class T {
       'cat.cantadas.desc': 'Para arrancar una sonrisa',
       'cat.gratidao.name': 'Gratitud por tu Amor',
       'cat.gratidao.desc': 'Gracias por ser tú',
+      'nav.couple': 'Nosotros',
+      'couple.tagline': 'Todo sobre el amor de ustedes',
+      'couple.nameLabel': 'Nombre de tu amor',
+      'couple.dateLabel': 'Empezamos a salir el',
+      'couple.tapToSet': 'Toca para definir',
+      'couple.daysWord': 'días juntos',
+      'couple.noDate': 'Define el día en que empezaron para ver sus días juntos.',
+      'couple.nextMonthsary': 'Faltan {n} días para su aniversario del mes 💞',
+      'couple.nextAnniversary': 'Faltan {n} días para su aniversario de novios 🎉',
+      'couple.todaySpecial': '¡Hoy es un día especial de ustedes! 🎉',
+      'card.generator': 'Generador de mensajes',
+      'card.generatorDesc': 'Crea un mensaje único',
+      'card.questions': 'Preguntas para la pareja',
+      'card.questionsDesc': 'Acérquense conversando',
+      'card.challenge': 'Reto de 30 días',
+      'card.challengeDesc': 'Un gesto de amor por día',
+      'dlg.save': 'Guardar',
+      'dlg.clear': 'Borrar',
+      'name.hint': 'Ej.: María',
+      'gen.title': 'Generador de mensajes',
+      'gen.chooseTone': 'Elige el tono',
+      'gen.personalized': 'Personalizado para {name}',
+      'gen.setNameHint': 'Define el nombre de tu amor para personalizar',
+      'gen.generate': 'Generar mensaje',
+      'gen.regenerate': 'Generar otro',
+      'gen.empty': 'Elige un tono y toca Generar.',
+      'tone.romantico': 'Romántico',
+      'tone.fofo': 'Tierno / Buenos días',
+      'tone.saudade': 'Te extraño',
+      'tone.desculpas': 'Disculpas',
+      'tone.engracado': 'Divertido',
+      'tone.compromisso': 'Compromiso',
+      'tone.gratidao': 'Gratitud',
+      'q.title': 'Preguntas para la pareja',
+      'q.intro': 'Una pregunta para acercarlos',
+      'q.next': 'Siguiente pregunta',
+      'ch.title': 'Reto de 30 días de amor',
+      'ch.dayWord': 'Día',
+      'ch.progress': '{n}/30 completados',
+      'ch.markDone': 'Marcar como hecho',
+      'ch.doneWord': 'Hecho',
+      'ch.comeTomorrow': 'Vuelve mañana para el siguiente 💞',
+      'ch.complete': '¡Completaron los 30 días de amor! 💞',
+      'ch.locked': 'Completa el día anterior primero',
 
     },
   };
