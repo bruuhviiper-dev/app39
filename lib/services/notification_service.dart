@@ -9,6 +9,7 @@ class NotificationService {
   final _plugin = FlutterLocalNotificationsPlugin();
   bool _ready = false;
   static const int _dailyId = 1001;
+  static const int _careId = 1002;
 
   Future<void> init() async {
     if (_ready) return;
@@ -64,4 +65,31 @@ class NotificationService {
   }
 
   Future<void> cancelDaily() => _plugin.cancel(_dailyId);
+
+  /// Lembrete diário "mande um carinho" (empurra o usuário a enviar amor).
+  Future<void> scheduleCareReminder({
+    required String title,
+    required String body,
+  }) async {
+    await init();
+    await _plugin.periodicallyShow(
+      _careId,
+      title,
+      body,
+      RepeatInterval.daily,
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'care_reminder',
+          'Lembrete de carinho',
+          channelDescription: 'Lembrete diário para mandar carinho ao par',
+          importance: Importance.defaultImportance,
+          priority: Priority.defaultPriority,
+        ),
+        iOS: DarwinNotificationDetails(),
+      ),
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+    );
+  }
+
+  Future<void> cancelCareReminder() => _plugin.cancel(_careId);
 }

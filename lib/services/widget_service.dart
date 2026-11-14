@@ -8,6 +8,7 @@ class WidgetService {
   WidgetService._();
 
   static const _androidName = 'QuoteWidgetProvider';
+  static const _daysName = 'DaysWidgetProvider';
 
   /// Grava a frase do dia (no idioma) + nome do app e manda atualizar o widget.
   static Future<void> updateDailyQuote({
@@ -19,6 +20,22 @@ class WidgetService {
       await HomeWidget.saveWidgetData<String>('quote_text', verse.text);
       await HomeWidget.saveWidgetData<String>('app_name', appName);
       await HomeWidget.updateWidget(androidName: _androidName);
+    } catch (_) {
+      // sem widget na tela / plataforma não suportada: ignora
+    }
+  }
+
+  /// Grava "dias juntos" + nome do par e atualiza o widget do casal.
+  static Future<void> updateDaysTogether({
+    required int days,
+    required String label,
+    required String name,
+  }) async {
+    try {
+      await HomeWidget.saveWidgetData<String>('days_number', '$days');
+      await HomeWidget.saveWidgetData<String>('days_label', label);
+      await HomeWidget.saveWidgetData<String>('couple_name', name);
+      await HomeWidget.updateWidget(androidName: _daysName);
     } catch (_) {
       // sem widget na tela / plataforma não suportada: ignora
     }

@@ -48,6 +48,21 @@ Future<void> main() async {
       body: t.notifBody,
     );
   }
+  // Reagenda o lembrete "mande um carinho" (se ligado).
+  if (appState.careReminderOn) {
+    await NotificationService.instance.scheduleCareReminder(
+      title: t.appName,
+      body: t.careNotifBody,
+    );
+  }
+  // Atualiza o widget "dias juntos" (se houver relacionamento definido).
+  if (appState.hasRelationship) {
+    await WidgetService.updateDaysTogether(
+      days: appState.daysTogether,
+      label: t.widgetDaysLabel,
+      name: appState.partnerName,
+    );
+  }
 }
 
 class FrasesDiariasApp extends StatelessWidget {

@@ -235,6 +235,27 @@ class T {
   String get chComeTomorrow => _('ch.comeTomorrow');
   String get chComplete => _('ch.complete');
   String get chLocked => _('ch.locked');
+  // Cartinhas programadas
+  String get cardLetters => _('card.letters');
+  String get cardLettersDesc => _('card.lettersDesc');
+  String get lettersTitle => _('letters.title');
+  String get lettersEmpty => _('letters.empty');
+  String get lettersNew => _('letters.new');
+  String get letterWriteHint => _('letters.writeHint');
+  String get letterRevealLabel => _('letters.revealLabel');
+  String get letterLockedIn => _('letters.lockedIn'); // {n}
+  String get letterOpensToday => _('letters.opensToday');
+  String get letterSealed => _('letters.sealed');
+  String get letterSave => _('letters.save');
+  String get letterNeedFuture => _('letters.needFuture');
+  String get delete => _('letters.delete');
+  // Lembrete "mande um carinho"
+  String get careReminderLabel => _('care.label');
+  String get careReminderDesc => _('care.desc');
+  String get careNotifBody => _('care.notifBody');
+  String get sendWhatsapp => _('care.whatsapp');
+  // Widget dias juntos
+  String get widgetDaysLabel => _('widget.daysLabel');
   String catDesc(String id) => _('cat.$id.desc');
 
   static const Map<String, Map<String, String>> _data = {
@@ -468,6 +489,24 @@ class T {
       'ch.comeTomorrow': 'Volte amanhã para o próximo desafio 💞',
       'ch.complete': 'Vocês completaram os 30 dias de amor! 💞',
       'ch.locked': 'Complete o dia anterior primeiro',
+      'card.letters': 'Cartinhas programadas',
+      'card.lettersDesc': 'Mensagens que abrem numa data',
+      'letters.title': 'Cartinhas programadas',
+      'letters.empty': 'Escreva uma cartinha que só vai abrir na data que você escolher. 💌',
+      'letters.new': 'Nova cartinha',
+      'letters.writeHint': 'Escreva a sua mensagem de amor...',
+      'letters.revealLabel': 'Abrir em',
+      'letters.lockedIn': 'Abre em {n} dias 🔒',
+      'letters.opensToday': 'Abre hoje! 💌',
+      'letters.sealed': 'Cartinha lacrada',
+      'letters.save': 'Guardar cartinha',
+      'letters.needFuture': 'Escolha uma data futura.',
+      'letters.delete': 'Apagar',
+      'care.label': 'Lembrete de carinho',
+      'care.desc': 'Um empurrãozinho diário para mandar amor',
+      'care.notifBody': 'Que tal mandar um carinho agora? 💕',
+      'care.whatsapp': 'Enviar no WhatsApp',
+      'widget.daysLabel': 'dias juntos',
 
     },
     'en': {
@@ -698,6 +737,24 @@ class T {
       'ch.comeTomorrow': 'Come back tomorrow for the next one 💞',
       'ch.complete': 'You finished the 30 days of love! 💞',
       'ch.locked': 'Finish the previous day first',
+      'card.letters': 'Scheduled letters',
+      'card.lettersDesc': 'Messages that open on a date',
+      'letters.title': 'Scheduled letters',
+      'letters.empty': 'Write a letter that only opens on the date you choose. 💌',
+      'letters.new': 'New letter',
+      'letters.writeHint': 'Write your love message...',
+      'letters.revealLabel': 'Open on',
+      'letters.lockedIn': 'Opens in {n} days 🔒',
+      'letters.opensToday': 'Opens today! 💌',
+      'letters.sealed': 'Sealed letter',
+      'letters.save': 'Save letter',
+      'letters.needFuture': 'Pick a future date.',
+      'letters.delete': 'Delete',
+      'care.label': 'Care reminder',
+      'care.desc': 'A little daily nudge to send love',
+      'care.notifBody': 'How about sending some love right now? 💕',
+      'care.whatsapp': 'Send on WhatsApp',
+      'widget.daysLabel': 'days together',
 
     },
     'es': {
@@ -931,6 +988,24 @@ class T {
       'ch.comeTomorrow': 'Vuelve mañana para el siguiente 💞',
       'ch.complete': '¡Completaron los 30 días de amor! 💞',
       'ch.locked': 'Completa el día anterior primero',
+      'card.letters': 'Cartas programadas',
+      'card.lettersDesc': 'Mensajes que se abren en una fecha',
+      'letters.title': 'Cartas programadas',
+      'letters.empty': 'Escribe una carta que solo se abrirá en la fecha que elijas. 💌',
+      'letters.new': 'Nueva carta',
+      'letters.writeHint': 'Escribe tu mensaje de amor...',
+      'letters.revealLabel': 'Abrir el',
+      'letters.lockedIn': 'Se abre en {n} días 🔒',
+      'letters.opensToday': '¡Se abre hoy! 💌',
+      'letters.sealed': 'Carta sellada',
+      'letters.save': 'Guardar carta',
+      'letters.needFuture': 'Elige una fecha futura.',
+      'letters.delete': 'Borrar',
+      'care.label': 'Recordatorio de cariño',
+      'care.desc': 'Un pequeño empujón diario para enviar amor',
+      'care.notifBody': '¿Qué tal enviar un poco de amor ahora? 💕',
+      'care.whatsapp': 'Enviar por WhatsApp',
+      'widget.daysLabel': 'días juntos',
 
     },
   };

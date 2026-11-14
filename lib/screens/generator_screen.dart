@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_spacing.dart';
@@ -117,10 +118,34 @@ class _GeneratorScreenState extends State<GeneratorScreen> {
                 ),
               ],
             ),
+            const SizedBox(height: 10),
+            FilledButton.icon(
+              onPressed: () => _sendWhatsApp(_message!),
+              icon: const Icon(LucideIcons.messageCircle, size: 18),
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF25D366),
+                foregroundColor: Colors.white,
+                minimumSize: const Size.fromHeight(48),
+              ),
+              label: Text(t.sendWhatsapp),
+            ),
           ],
         ],
       ),
     );
+  }
+
+  Future<void> _sendWhatsApp(String text) async {
+    final uri = Uri.parse('https://wa.me/?text=${Uri.encodeComponent(text)}');
+    try {
+      final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      if (!ok) {
+        await SharePlus.instance.share(ShareParams(text: text));
+      }
+      RatePrompt.registerPositiveAction();
+    } catch (_) {
+      await SharePlus.instance.share(ShareParams(text: text));
+    }
   }
 }
 

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../data/love_letter.dart';
 import 'rate_prompt.dart';
 
 /// Estado global: favoritos + preferências (tema, idioma, tamanho de fonte,
@@ -25,6 +28,8 @@ class AppState extends ChangeNotifier {
   static const _kRelStart = 'rel_start_ms';
   static const _kChallengeDone = 'challenge_done_days';
   static const _kChallengeLast = 'challenge_last_date';
+  static const _kLetters = 'love_letters';
+  static const _kCareReminder = 'care_reminder_on';
 
   /// Produto de compra única "remover anúncios" — mesmo id do app2/app26.
   static const String pRemoveAds = 'no_ads';
@@ -41,6 +46,8 @@ class AppState extends ChangeNotifier {
   DateTime? _relStart;
   final Set<int> _challengeDone = {};
   String? _challengeLast; // yyyy-mm-dd da última conclusão
+  final List<LoveLetter> _letters = [];
+  bool _careReminderOn = false;
 
   // ----- favoritos -----
   Set<String> get favorites => Set.unmodifiable(_favorites);
@@ -197,6 +204,58 @@ class AppState extends ChangeNotifier {
         '${n.day.toString().padLeft(2, '0')}';
   }
 
+  // ----- cartinhas programadas -----
+  /// Cartinhas ordenadas: lacradas (mais próximas de abrir) primeiro, depois as
+  /// já reveladas (mais recentes primeiro).
+  List<LoveLetter> get letters {
+    final list = List<LoveLetter>.from(_letters);
+    list.sort((a, b) {
+      if (a.isRevealed != b.isRevealed) return a.isRevealed ? 1 : -1;
+      return a.isRevealed
+          ? b.revealAt.compareTo(a.revealAt)
+          : a.revealAt.compareTo(b.revealAt);
+    });
+    return list;
+  }
+
+  bool get hasLetters => _letters.isNotEmpty;
+
+  /// Nº de cartinhas que foram reveladas e ainda não foram "vistas" não é
+  /// rastreado; usamos a contagem de reveladas para o badge do hub.
+  int get revealedLettersCount => _letters.where((l) => l.isRevealed).length;
+
+  void addLetter(String text, DateTime revealAt) {
+    final now = DateTime.now();
+    _letters.add(LoveLetter(
+      id: now.microsecondsSinceEpoch.toString(),
+      text: text.trim(),
+      revealAt: revealAt,
+      createdAt: now,
+    ));
+    _persistLetters();
+    notifyListeners();
+    RatePrompt.registerPositiveAction();
+  }
+
+  void removeLetter(String id) {
+    _letters.removeWhere((l) => l.id == id);
+    _persistLetters();
+    notifyListeners();
+  }
+
+  void _persistLetters() {
+    _prefs.setStringList(
+        _kLetters, _letters.map((l) => json.encode(l.toJson())).toList());
+  }
+
+  // ----- lembrete "mande um carinho" -----
+  bool get careReminderOn => _careReminderOn;
+  void setCareReminderOn(bool on) {
+    _careReminderOn = on;
+    _prefs.setBool(_kCareReminder, on);
+    notifyListeners();
+  }
+
   void _load() {
     _favorites.addAll(_prefs.getStringList(_kFavorites) ?? const []);
     final tm = _prefs.getInt(_kThemeMode);
@@ -217,5 +276,11 @@ class AppState extends ChangeNotifier {
         .map(int.tryParse)
         .whereType<int>());
     _challengeLast = _prefs.getString(_kChallengeLast);
+    for (final s in _prefs.getStringList(_kLetters) ?? const []) {
+      try {
+        _letters.add(LoveLetter.fromJson(json.decode(s) as Map<String, dynamic>));
+      } catch (_) {/* ignora item corrompido */}
+    }
+    _careReminderOn = _prefs.getBool(_kCareReminder) ?? false;
   }
 }

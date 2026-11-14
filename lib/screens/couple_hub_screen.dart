@@ -7,8 +7,11 @@ import '../core/theme/app_spacing.dart';
 import '../core/theme/app_text_styles.dart';
 import '../l10n/strings.dart';
 import '../services/app_state.dart';
+import '../services/notification_service.dart';
+import '../services/widget_service.dart';
 import 'challenge_screen.dart';
 import 'generator_screen.dart';
+import 'letters_screen.dart';
 import 'questions_screen.dart';
 
 /// Aba "Nós" — hub dos recursos de casal: contador de dias juntos, nome do par,
@@ -44,6 +47,7 @@ class CoupleHubScreen extends StatelessWidget {
                 : t.coupleTapToSet,
             onTap: () => _pickDate(context, state),
           ),
+          _CareReminderTile(state: state),
           const SizedBox(height: AppSpacing.x4),
           _FeatureCard(
             icon: LucideIcons.wandSparkles,
@@ -65,6 +69,13 @@ class CoupleHubScreen extends StatelessWidget {
             desc: t.cardChallengeDesc,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => const ChallengeScreen())),
+          ),
+          _FeatureCard(
+            icon: LucideIcons.mail,
+            title: t.cardLetters,
+            desc: t.cardLettersDesc,
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => const LettersScreen())),
           ),
         ],
       ),
@@ -114,7 +125,16 @@ class CoupleHubScreen extends StatelessWidget {
       firstDate: DateTime(1980),
       lastDate: now,
     );
-    if (picked != null) state.setRelationshipStart(picked);
+    if (picked != null) {
+      state.setRelationshipStart(picked);
+      if (context.mounted) {
+        await WidgetService.updateDaysTogether(
+          days: state.daysTogether,
+          label: T.of(context).widgetDaysLabel,
+          name: state.partnerName,
+        );
+      }
+    }
   }
 }
 
@@ -256,6 +276,68 @@ class _SettingTile extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CareReminderTile extends StatelessWidget {
+  const _CareReminderTile({required this.state});
+  final AppState state;
+
+  Future<void> _toggle(BuildContext context, bool on) async {
+    final t = T.of(context);
+    if (on) {
+      final granted = await NotificationService.instance.requestPermission();
+      if (!granted) return;
+      await NotificationService.instance.scheduleCareReminder(
+        title: t.appName,
+        body: t.careNotifBody,
+      );
+      state.setCareReminderOn(true);
+    } else {
+      await NotificationService.instance.cancelCareReminder();
+      state.setCareReminderOn(false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = T.of(context);
+    final p = Palette.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Container(
+        decoration: BoxDecoration(
+          color: p.surface,
+          borderRadius: BorderRadius.circular(AppRadii.card),
+          border: Border.all(color: p.border),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+        child: Row(
+          children: [
+            const Icon(LucideIcons.bellRing, size: 20, color: AppColors.gold),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(t.careReminderLabel,
+                      style: AppTextStyles.body.copyWith(color: p.textPrimary)),
+                  Text(t.careReminderDesc,
+                      style: AppTextStyles.caption
+                          .copyWith(color: p.textSecondary)),
+                ],
+              ),
+            ),
+            Switch(
+              value: state.careReminderOn,
+              onChanged: (v) => _toggle(context, v),
+              activeThumbColor: AppColors.bg,
+              activeTrackColor: AppColors.gold,
+            ),
+          ],
         ),
       ),
     );
