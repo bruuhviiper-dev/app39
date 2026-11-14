@@ -256,6 +256,12 @@ class T {
   String get sendWhatsapp => _('care.whatsapp');
   // Widget dias juntos
   String get widgetDaysLabel => _('widget.daysLabel');
+  // Cartão animado (story GIF)
+  String get cardAnimated => _('card.animated');
+  String get cardAnimatedDesc => _('card.animatedDesc');
+  String get animExport => _('anim.export');
+  String get animExporting => _('anim.exporting');
+  String get animDone => _('anim.done');
   String catDesc(String id) => _('cat.$id.desc');
 
   static const Map<String, Map<String, String>> _data = {
@@ -507,6 +513,11 @@ class T {
       'care.notifBody': 'Que tal mandar um carinho agora? 💕',
       'care.whatsapp': 'Enviar no WhatsApp',
       'widget.daysLabel': 'dias juntos',
+      'card.animated': 'Cartão animado',
+      'card.animatedDesc': 'Um story que se mexe 💞',
+      'anim.export': 'Salvar GIF e compartilhar',
+      'anim.exporting': 'Gerando o seu GIF...',
+      'anim.done': 'GIF salvo na galeria! 💞',
 
     },
     'en': {
@@ -755,6 +766,11 @@ class T {
       'care.notifBody': 'How about sending some love right now? 💕',
       'care.whatsapp': 'Send on WhatsApp',
       'widget.daysLabel': 'days together',
+      'card.animated': 'Animated card',
+      'card.animatedDesc': 'A moving story card 💞',
+      'anim.export': 'Save GIF and share',
+      'anim.exporting': 'Creating your GIF...',
+      'anim.done': 'GIF saved to gallery! 💞',
 
     },
     'es': {
@@ -1006,6 +1022,11 @@ class T {
       'care.notifBody': '¿Qué tal enviar un poco de amor ahora? 💕',
       'care.whatsapp': 'Enviar por WhatsApp',
       'widget.daysLabel': 'días juntos',
+      'card.animated': 'Tarjeta animada',
+      'card.animatedDesc': 'Una historia con movimiento 💞',
+      'anim.export': 'Guardar GIF y compartir',
+      'anim.exporting': 'Creando tu GIF...',
+      'anim.done': '¡GIF guardado en la galería! 💞',
 
     },
   };

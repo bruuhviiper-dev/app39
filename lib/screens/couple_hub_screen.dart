@@ -6,9 +6,11 @@ import '../core/theme/app_colors.dart';
 import '../core/theme/app_spacing.dart';
 import '../core/theme/app_text_styles.dart';
 import '../l10n/strings.dart';
+import '../data/verses.dart';
 import '../services/app_state.dart';
 import '../services/notification_service.dart';
 import '../services/widget_service.dart';
+import 'animated_card_screen.dart';
 import 'challenge_screen.dart';
 import 'generator_screen.dart';
 import 'letters_screen.dart';
@@ -76,6 +78,14 @@ class CoupleHubScreen extends StatelessWidget {
             desc: t.cardLettersDesc,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => const LettersScreen())),
+          ),
+          _FeatureCard(
+            icon: LucideIcons.clapperboard,
+            title: t.cardAnimated,
+            desc: t.cardAnimatedDesc,
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => AnimatedCardScreen(
+                    message: VerseData.ofToday(t.lang).text))),
           ),
         ],
       ),
