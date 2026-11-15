@@ -21,6 +21,19 @@ class SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Container(
+          width: 4,
+          height: 20,
+          margin: const EdgeInsets.only(right: 10),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [AppColors.gold, AppColors.goldDark],
+            ),
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
         Expanded(
           child: Text(title,
               style: AppTextStyles.sectionTitle

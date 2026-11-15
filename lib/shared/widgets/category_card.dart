@@ -35,8 +35,8 @@ class CategoryCard extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0x22000000), Color(0xCC06111F)],
-                  stops: [0.35, 1.0],
+                  colors: [Color(0x11000000), Color(0x66000000), Color(0xE61C0A14)],
+                  stops: [0.0, 0.5, 1.0],
                 ),
               ),
             ),
@@ -66,8 +66,8 @@ class CategoryCard extends StatelessWidget {
                   Text(t.catDesc(category.id),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.categoryDesc
-                          .copyWith(color: AppColors.textSecondary)),
+                      style: AppTextStyles.categoryDesc.copyWith(
+                          color: Colors.white.withValues(alpha: 0.82))),
                 ],
               ),
             ),
