@@ -13,9 +13,9 @@ class AppColors {
   static const surface = Color(0xFF331528); // cards
   static const surfaceHigh = Color(0xFF3F1C32); // superfície elevada
 
-  // Marca (rosé / rose-gold) — nome `gold` preservado, valor romântico
-  static const gold = Color(0xFFF28CA0);
-  static const goldDark = Color(0xFFD1687F);
+  // Marca (ROSA VIBRANTE extraído do ícone de corações) — nome `gold` preservado
+  static const gold = Color(0xFFF0286A);
+  static const goldDark = Color(0xFFC8104F);
 
   // Texto
   static const textPrimary = Color(0xFFFFFFFF);
