@@ -113,7 +113,7 @@ class ImageEditorScreen extends StatefulWidget {
 
 class _ImageEditorScreenState extends State<ImageEditorScreen> {
   final _cardKey = GlobalKey();
-  late int _bg = Landscapes.editorIndexForCategory(widget.verse.categoryId);
+  int _bg = 0;
   int _bgKind = 0; // 0=foto, 1=cor, 2=gradiente
   int _bgSub = 0; // sub-aba visível: 0=fotos 1=cores 2=degradês 3=texturas
   int _bgColor = 0;
@@ -313,7 +313,7 @@ class _ImageEditorScreenState extends State<ImageEditorScreen> {
           ),
         );
       default:
-        return LandscapeImage(asset: Landscapes.editorBackgrounds[_bg]);
+        return LandscapeImage(asset: Landscapes.editorBgs[_bg].of(_format));
     }
   }
 
@@ -479,7 +479,7 @@ class _ImageEditorScreenState extends State<ImageEditorScreen> {
             tab: _tab,
             onTab: (i) => setState(() => _tab = i),
             onHistory: _record,
-            backgrounds: Landscapes.editorBackgrounds,
+            backgrounds: Landscapes.editorBgs,
             bgKind: _bgKind,
             bgSub: _bgSub,
             onBgSub: (i) => setState(() => _bgSub = i),
@@ -645,7 +645,7 @@ class _ControlPanel extends StatelessWidget {
   final int tab;
   final ValueChanged<int> onTab;
   final VoidCallback onHistory;
-  final List<String> backgrounds;
+  final List<BgAsset> backgrounds;
   final int bgKind;
   final int bgSub;
   final ValueChanged<int> onBgSub;
@@ -818,7 +818,7 @@ class _ControlPanel extends StatelessWidget {
                       : Colors.transparent,
                   width: 2.5),
             ),
-            child: LandscapeImage(asset: backgrounds[i], thumb: 72),
+            child: LandscapeImage(asset: backgrounds[i].thumb, thumb: 72),
           ),
         ),
       );

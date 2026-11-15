@@ -74,4 +74,27 @@ class Landscapes {
     final i = editorBackgrounds.indexOf(asset);
     return i < 0 ? 0 : i;
   }
+
+  /// Fundos do EDITOR com versão dedicada por FORMATO (9:16 / 1:1 / 4:5) em WebP.
+  /// Fotos Pexels (licença livre). O editor usa [BgAsset.of(format)] p/ enquadrar
+  /// perfeito em cada formato e [BgAsset.thumb] no seletor.
+  static final List<BgAsset> editorBgs = [
+    for (var i = 1; i <= 18; i++) BgAsset(i.toString().padLeft(2, '0')),
+  ];
+}
+
+/// Um fundo do editor em 3 formatos + miniatura (ver [Landscapes.editorBgs]).
+class BgAsset {
+  const BgAsset(this.n);
+  final String n; // '01'..'18'
+
+  String get thumb => 'assets/backgrounds/thumbs/bg$n.webp';
+
+  /// Caminho do fundo no formato do editor: 0 = 9:16 (story), 1 = 1:1 (feed),
+  /// 2 = 4:5 (status).
+  String of(int format) {
+    const dir = ['r916', 'r11', 'r45'];
+    final d = (format >= 0 && format < dir.length) ? dir[format] : 'r916';
+    return 'assets/backgrounds/$d/bg$n.webp';
+  }
 }
