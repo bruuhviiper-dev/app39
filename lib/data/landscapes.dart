@@ -1,7 +1,7 @@
-/// Fundos ROMÂNTICOS (offline). Arte 100% ORIGINAL gerada para o app (pôr do sol,
-/// silhueta de casal, céu estrelado, bokeh de corações, flores, luz de velas) —
-/// sem fotos/stock de terceiros. Fallback elegante quando uma imagem não existir
-/// é tratado nos widgets (gradiente + ícone).
+/// Fundos ROMÂNTICOS (offline). Categorias/hero usam FOTOS reais do Pexels (licença
+/// livre, sem rostos — ver ATTRIBUTIONS.md); os demais fundos ainda são arte original
+/// (em renovação). Fallback elegante quando uma imagem não existir é tratado nos
+/// widgets (gradiente + ícone).
 class Landscapes {
   Landscapes._();
 
