@@ -14,7 +14,7 @@ class AdsService with WidgetsBindingObserver {
 
   /// Produção: IDs reais. Ligue `true` só p/ testar sem risco de clicar no
   /// próprio anúncio real.
-  static const bool _useTestAds = true; // TODO app39: criar unidades reais AdMob e por false
+  static const bool _useTestAds = false; // app39: unidades reais ligadas
   static const bool _fullScreenAdsEnabled = true;
 
   // IDs de TESTE oficiais do Google
@@ -24,12 +24,12 @@ class AdsService with WidgetsBindingObserver {
   static const _testAppOpen = 'ca-app-pub-3940256099942544/9257395921';
   static const _testNative = 'ca-app-pub-3940256099942544/2247696110';
 
-  // IDs REAIS — Frases Diárias (AdMob app ca-app-pub-5880219350817278~5241847601).
-  static const _realBanner = 'ca-app-pub-5880219350817278/8201559573';
-  static const _realInterstitial = 'ca-app-pub-5880219350817278/2615684267';
-  static const _realRewarded = 'ca-app-pub-5880219350817278/2949232897';
-  static const _realAppOpen = 'ca-app-pub-5880219350817278/1636151225';
-  static const _realNative = 'ca-app-pub-5880219350817278/2674946906';
+  // IDs REAIS — Mensagens de Amor (AdMob app ca-app-pub-5880219350817278~7027178313).
+  static const _realBanner = 'ca-app-pub-5880219350817278/3000303396';
+  static const _realInterstitial = 'ca-app-pub-5880219350817278/5844803630';
+  static const _realRewarded = 'ca-app-pub-5880219350817278/7034917174';
+  static const _realAppOpen = 'ca-app-pub-5880219350817278/1743062048';
+  static const _realNative = 'ca-app-pub-5880219350817278/2313732672';
   static bool _ph(String id) => id.contains('0000000000');
 
   bool _initialized = false;
